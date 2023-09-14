@@ -10,10 +10,6 @@ function getComputerChoice() {
     }
 }
 
-const playerSelection = prompt("Pick rock, paper or scissors: ").toLowerCase()
-const computerSelection = getComputerChoice()
-console.log(playRound(playerSelection, computerSelection))
-
 // // compare the choices and decide who won
 
 function playRound(playerSelection, computerSelection) {
@@ -43,5 +39,17 @@ function playRound(playerSelection, computerSelection) {
         }
     } else {
         return "Please enter a valid input!"
+    }
+}
+
+game()
+
+function game() {
+    for (let i = 0; i < 5; i++) {
+        const playerSelection = prompt(
+            "Pick rock, paper or scissors: "
+        ).toLowerCase()
+        const computerSelection = getComputerChoice()
+        console.log(playRound(playerSelection, computerSelection))
     }
 }
