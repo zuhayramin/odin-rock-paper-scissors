@@ -1,3 +1,27 @@
+const rock = document.querySelector("#rock")
+const paper = document.querySelector("#paper")
+const scissors = document.querySelector("#scissors")
+const resultContainer = document.querySelector(".resultContainer")
+const result = document.querySelector(".result")
+let playerSelection
+
+rock.addEventListener("click", function () {
+    playerSelection = "rock"
+    game(playerSelection)
+})
+
+paper.addEventListener("click", function () {
+    playerSelection = "paper"
+    game(playerSelection)
+})
+
+scissors.addEventListener("click", function () {
+    playerSelection = "scissors"
+    game(playerSelection)
+})
+
+console.log(playerSelection)
+
 // get the computer to make a choice
 function getComputerChoice() {
     const computerChoice = Math.floor(Math.random() * 3) + 1
@@ -37,19 +61,13 @@ function playRound(playerSelection, computerSelection) {
         } else {
             return "It's a tie!"
         }
-    } else {
-        return "Please enter a valid input!"
     }
 }
 
 game()
 
-function game() {
-    for (let i = 0; i < 5; i++) {
-        const playerSelection = prompt(
-            "Pick rock, paper or scissors: "
-        ).toLowerCase()
-        const computerSelection = getComputerChoice()
-        console.log(playRound(playerSelection, computerSelection))
-    }
+function game(playerSelection) {
+    const computerSelection = getComputerChoice()
+    result.textContent = playRound(playerSelection, computerSelection)
+    resultContainer.appendChild(result)
 }
